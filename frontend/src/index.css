@@ -336,41 +336,32 @@
     background-color: #2a2a2a;
   }
   
-  .contact-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  
-  .contact-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+ /* Light-mode defaults (you already have these) */
+.contact-icon {
     background-color: var(--accent-lavender);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--primary-purple);
-    font-size: 1.25rem;
-    flex-shrink: 0;
   }
   
   .social-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
     background-color: var(--accent-lavender);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--primary-purple);
-    font-size: 1rem;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
   }
   
+  /* Dark-mode overrides */
+  .dark-mode .contact-icon {
+    background-color: #4c1d95;    /* darker lavender/purple */
+    color: #faf5ff;               /* near-white for contrast */
+  }
+  
+  .dark-mode .social-icon {
+    background-color: #2d3748;    /* deep slate */
+    color: #9f7aea;               /* light purple accent */
+  }
+  
+  /* Hover remains the same (or tweak for dark if you like) */
   .social-icon:hover {
     background-color: var(--primary-purple);
-    color: white;
+    color: #ffffff;
     transform: translateY(-3px);
   }
   
