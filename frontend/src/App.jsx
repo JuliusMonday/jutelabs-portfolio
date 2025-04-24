@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
+// import Projects from './components/Projects';
 import Contact from './components/Contact';
 import './App.css';
 import Footer from './components/Footer';
@@ -26,7 +26,7 @@ const App = () => {
       <main>
         <Home />
         <Skills />
-        <Projects />
+        {/* <Projects /> */}
         <Contact />
         <Footer/>
       </main>
