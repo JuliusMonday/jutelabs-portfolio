@@ -18,7 +18,7 @@ const Home = () => (
         </h1>
         <p className="subtitle">
         Julius Technologies & Laboratories (JuTeLabs)
-        Biochemist-turned full-stack engineer, graphic designer, and WordPress artisan. I bridge science and code—shaping backend APIs and dynamic frontends by day, crafting brand visuals and custom WordPress themes by night. <span className='gradient-text'>My work is as precise as lab protocols and as polished as top-tier design.</span>
+        Biochemist-turned full-stack engineer, graphic designer, and WordPress artisan. I bridge science and code, shaping backend APIs and dynamic frontends by day, crafting brand visuals and custom WordPress themes by night. <span className='gradient-text'>My work is as precise as lab protocols and as polished as top-tier design.</span>
         </p>
         <div className="actions">
           <a href="#projects" className="btn btn-primary">View Projects</a>
