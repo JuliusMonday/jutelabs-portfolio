@@ -12,7 +12,7 @@ const Footer = () => (
           <p className="brand-description">
             Transforming ideas into innovative technology solutions since 2021. I specialize in cutting-edge development and research.
           </p>
-          <a href="/resume.pdf" download className="btn-secondary">Download CV</a>
+          <a href="../assets/JL-resume.pdf" download className="btn-secondary">Download CV</a>
         </div>
         <div className="footer-section links">
           <h3>Quick Links</h3>

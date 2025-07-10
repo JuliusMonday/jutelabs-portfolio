@@ -73,7 +73,7 @@ const NavBar = ({ isDarkMode, onToggleTheme }) => {
           </span>
         </button>
 
-        <a href="/resume.pdf" download className="download-btn">Download CV</a>
+        <a href="/JL-resume.pdf" download className="download-btn">Download CV</a>
 
         <button onClick={() => setIsMenuOpen(prev => !prev)} className="hamburger" aria-label="Menu">
           <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>

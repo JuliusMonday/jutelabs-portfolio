@@ -53,10 +53,10 @@ const Contact = () => (
           <div className="social-links">
             <h3>Connect With Me</h3>
             <div className="social-icons">
-              <a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
+              <a href="https://www.linkedin.com/in/chimaobi-julius-bba95a233/" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://twitter.com/JuTeLabs" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
               <a href="#" aria-label="GitHub"><i className="fab fa-github"></i></a>
-              <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+              <a href="https://www.instagram.com/jutelabss/" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
             </div>
           </div>
         </div>
