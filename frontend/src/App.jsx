@@ -37,8 +37,10 @@ const App = () => {
       <main>
         <Home />
         <Skills />
+        <div className="projects">
+          {showProject && <Projects />}
+        </div>
         
-        {showProject && <Projects />}
         <Contact />
         <Footer/>
       </main>
