@@ -20,15 +20,15 @@ const App = () => {
     setIsDarkMode(prev => !prev);
   };
 
-  useEffect(() => {
-    // Set a timer to hide the component after 1 minute
-    const timer = setTimeout(() => {
-      setShowProject(false);
-    }, 60000); // 60,000 ms = 1 minute
+  // useEffect(() => {
+  //   // Set a timer to hide the component after 1 minute
+  //   const timer = setTimeout(() => {
+  //     setShowProject(false);
+  //   }, 60000); // 60,000 ms = 1 minute
 
-    // Cleanup the timer on unmount
-    return () => clearTimeout(timer);
-  }, []);
+  //   // Cleanup the timer on unmount
+  //   return () => clearTimeout(timer);
+  // }, []);
 
 
   return (
@@ -37,10 +37,10 @@ const App = () => {
       <main>
         <Home />
         <Skills />
-        <div className="projects">
+        {/* <div className="projects">
           {showProject && <Projects />}
-        </div>
-        
+        </div> */}
+        <Projects/>
         <Contact />
         <Footer/>
       </main>

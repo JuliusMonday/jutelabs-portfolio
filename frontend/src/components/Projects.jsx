@@ -3,27 +3,41 @@ import "./Projects.css";
 const Projects = () => {
  const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, product management, and payment integration.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Izu Nwachukwu Foundation",
+      description: "A full scale, sustainable, and impactful non-profit organization that empowers children and youth from sub-Saharan Africa to achieve their full potential in education, health, and social development.",
+      technologies: ["HTML", "Css", "Javascript", "WordPress"],
       link: "#"
     },
     {
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+      title: "BloodMatch",
+      description: "A full-stack application for matching blood donors and recipients based on their blood type, compatitibility, and Clinicals.",
+      technologies: ["React", "Node.js", "Express", "MongoDB"],
       link: "#"
     },
+
     {
-      title: "Weather Dashboard",
-      description: "An interactive weather dashboard that displays current conditions and forecasts using a third-party weather API with beautiful data visualizations.",
-      technologies: ["React", "Chart.js", "OpenWeather API"],
+      title: "JuTeLabs CGPA Calculator",
+      description: "An interactive tool for calculating the CGPA (College Grade Point Average) of students based on their grades for each semester using NBTE Standard for polytechnic and college students.",
+      technologies: ["React", "Node.js", "Express", "MongoDB"],
       link: "#"
     },
+    
     {
-      title: "Portfolio Website",
-      description: "A responsive portfolio website showcasing my work and skills, built with modern web technologies and optimized for performance.",
+      title: "Students' Association Website",
+      description: "A responsive website for the Students' Association of JuTeLabs, showcasing the latest news, events, and activities.",
       technologies: ["React", "Tailwind CSS", "Framer Motion"],
+      link: "#"
+   },
+     {
+      title: "HealthStarEMSINC",
+      description: "A responsive website for HealthStar EMS,dedicated to offering comprehensive medical transport services tailored to each patient. Our state-of-the-art vehicles, skilled staff, and patient-first approach ensure trusted, effective care across all transport needs.",
+      technologies: ["HTML", "CSS", "WORDPRESS", "FIGMA"],
+      link: "#"
+   },
+      {
+      title: "The Charles Osuji Foundation",
+      description: "A responsive website for the charles osuji foundation a non-profit organisation that aims to empower young people through education and oportunity.",
+      technologies: ["HTML", "CSS", "WORDPRESS", "FIGMA"],
       link: "#"
     }
   ];
