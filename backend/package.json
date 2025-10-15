@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is the backend of my Portfolio website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Backend",
+    "Monday",
+    "chimaobi",
+    "Julius",
+    "software",
+    "developer",
+    "frontend/backend-developer"
+  ],
+  "author": "Monday Chimaobi Julius Aka JuTeLabs",
+  "license": "ISC"
+}

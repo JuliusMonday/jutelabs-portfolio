@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './NavBar.css';
-
+import { Github, Linkedin, Mail } from 'lucide-react';
 const NavBar = ({ isDarkMode, onToggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -73,7 +73,11 @@ const NavBar = ({ isDarkMode, onToggleTheme }) => {
           </span>
         </button>
 
-        <a href="/JL-resume.pdf" download className="download-btn">Download CV</a>
+        <div className="icon-container">
+              <a href="#" className="social-icon"><Github className='icon-placeholder' size={20} /></a>
+              <a href="#" className="social-icon"><Linkedin className='icon-placeholder' size={20} /></a>
+              <a href="#" className="social-icon"><Mail className='icon-placeholder' size={20} /></a>
+            </div>
 
         <button onClick={() => setIsMenuOpen(prev => !prev)} className="hamburger" aria-label="Menu">
           <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>

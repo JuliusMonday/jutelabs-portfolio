@@ -1,0 +1,678 @@
+import React from 'react';
+import { Github, Linkedin, Mail, ExternalLink, Code, GraduationCap, Briefcase, Award, ChevronDown } from 'lucide-react';
+
+const App = () => {
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const projects = [
+    {
+      title: "E-Commerce Platform",
+      description: "A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, product management, and payment integration.",
+      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+      link: "#"
+    },
+    {
+      title: "Task Management App",
+      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+      technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+      link: "#"
+    },
+    {
+      title: "Weather Dashboard",
+      description: "An interactive weather dashboard that displays current conditions and forecasts using a third-party weather API with beautiful data visualizations.",
+      technologies: ["React", "Chart.js", "OpenWeather API"],
+      link: "#"
+    },
+    {
+      title: "Portfolio Website",
+      description: "A responsive portfolio website showcasing my work and skills, built with modern web technologies and optimized for performance.",
+      technologies: ["React", "Tailwind CSS", "Framer Motion"],
+      link: "#"
+    }
+  ];
+
+  const education = [
+    {
+      degree: "Master of Science in Computer Science",
+      school: "Stanford University",
+      year: "2020 - 2022",
+      description: "Specialized in Artificial Intelligence and Machine Learning. GPA: 3.8/4.0"
+    },
+    {
+      degree: "Bachelor of Science in Software Engineering",
+      school: "University of California, Berkeley",
+      year: "2016 - 2020",
+      description: "Graduated with honors. Minor in Mathematics."
+    }
+  ];
+
+  const experience = [
+    {
+      title: "Senior Software Engineer",
+      company: "Tech Innovations Inc.",
+      period: "2022 - Present",
+      description: "Lead development of scalable web applications using React and Node.js. Mentored junior developers and implemented CI/CD pipelines."
+    },
+    {
+      title: "Software Engineer",
+      company: "Digital Solutions LLC",
+      period: "2020 - 2022",
+      description: "Developed and maintained enterprise applications. Collaborated with cross-functional teams to deliver high-quality software solutions."
+    },
+    {
+      title: "Frontend Developer Intern",
+      company: "StartupXYZ",
+      period: "Summer 2019",
+      description: "Built responsive user interfaces and implemented new features for the company's main product."
+    }
+  ];
+
+  const skills = [
+    "JavaScript", "TypeScript", "React", "Node.js", "Python", "Java", "SQL", "MongoDB",
+    "AWS", "Docker", "Git", "REST APIs", "GraphQL", "HTML5", "CSS3", "Tailwind CSS"
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-black/20 backdrop-blur-md z-50 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Alex Chen
+            </div>
+            <div className="hidden md:flex space-x-8">
+              <button onClick={() => scrollToSection('about')} className="hover:text-purple-300 transition-colors">About</button>
+              <button onClick={() => scrollToSection('experience')} className="hover:text-purple-300 transition-colors">Experience</button>
+              <button onClick={() => scrollToSection('projects')} className="hover:text-purple-300 transition-colors">Projects</button>
+              <button onClick={() => scrollToSection('education')} className="hover:text-purple-300 transition-colors">Education</button>
+              <button onClick={() => scrollToSection('contact')} className="hover:text-purple-300 transition-colors">Contact</button>
+            </div>
+            <div className="flex space-x-4">
+              <a href="#" className="hover:text-purple-300 transition-colors"><Github size={20} /></a>
+              <a href="#" className="hover:text-purple-300 transition-colors"><Linkedin size={20} /></a>
+              <a href="#" className="hover:text-purple-300 transition-colors"><Mail size={20} /></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-8">
+            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 mb-6">
+              <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center">
+                <Code size={48} className="text-purple-400" />
+              </div>
+            </div>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+            Alex Chen
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Full-Stack Software Engineer passionate about building scalable, user-friendly applications
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => scrollToSection('projects')}
+              className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105"
+            >
+              View My Work
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="px-8 py-3 border-2 border-purple-400 rounded-full font-semibold hover:bg-purple-400 hover:bg-opacity-20 transition-all"
+            >
+              Get In Touch
+            </button>
+          </div>
+          <div className="mt-12 animate-bounce">
+            <ChevronDown size={32} className="mx-auto text-purple-400 cursor-pointer" onClick={() => scrollToSection('about')} />
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+            <GraduationCap className="text-purple-400" />
+            About Me
+          </h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                I'm a passionate software engineer with over 4 years of experience building web applications 
+                that solve real-world problems. I specialize in full-stack development with a focus on 
+                creating intuitive user experiences and robust backend systems.
+              </p>
+              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                My approach combines technical excellence with creative problem-solving. I believe in writing 
+                clean, maintainable code and continuously learning new technologies to stay at the forefront 
+                of software development.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {skills.slice(0, 8).map((skill, index) => (
+                  <span key={index} className="px-3 py-1 bg-purple-900/50 rounded-full text-sm border border-purple-500/30">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-slate-800/50 p-8 rounded-2xl border border-white/10">
+              <h3 className="text-2xl font-bold mb-6 text-purple-400">Technical Skills</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {skills.map((skill, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                    <span>{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+            <Briefcase className="text-purple-400" />
+            Work Experience
+          </h2>
+          <div className="space-y-8">
+            {experience.map((job, index) => (
+              <div key={index} className="bg-slate-800/50 p-8 rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-purple-400">{job.title}</h3>
+                    <p className="text-xl text-gray-300">{job.company}</p>
+                  </div>
+                  <span className="px-4 py-2 bg-purple-900/50 rounded-full text-purple-300 font-medium">
+                    {job.period}
+                  </span>
+                </div>
+                <p className="text-gray-300 leading-relaxed">{job.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+            <Code className="text-purple-400" />
+            Featured Projects
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <div key={index} className="bg-slate-800/50 p-6 rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all group">
+                <h3 className="text-2xl font-bold mb-3 text-purple-400 group-hover:text-purple-300 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 mb-4 leading-relaxed">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className="px-3 py-1 bg-purple-900/50 rounded-full text-sm border border-purple-500/30">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <a 
+                  href={project.link} 
+                  className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium group/link"
+                >
+                  View Project
+                  <ExternalLink size={16} className="group-hover/link:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-800/30">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3">
+            <GraduationCap className="text-purple-400" />
+            Education
+          </h2>
+          <div className="space-y-8">
+            {education.map((edu, index) => (
+              <div key={index} className="bg-slate-800/50 p-8 rounded-2xl border border-white/10">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-purple-400">{edu.degree}</h3>
+                    <p className="text-xl text-gray-300">{edu.school}</p>
+                  </div>
+                  <span className="px-4 py-2 bg-purple-900/50 rounded-full text-purple-300 font-medium">
+                    {edu.year}
+                  </span>
+                </div>
+                <p className="text-gray-300">{edu.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8">Let's Work Together</h2>
+          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            I'm always interested in new opportunities and exciting projects. Feel free to reach out!
+          </p>
+          <div className="flex justify-center space-x-6">
+            <a 
+              href="mailto:alex.chen@example.com" 
+              className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105"
+            >
+              <Mail size={20} />
+              Email Me
+            </a>
+            <a 
+              href="#" 
+              className="flex items-center gap-2 px-6 py-3 border-2 border-purple-400 rounded-full font-semibold hover:bg-purple-400 hover:bg-opacity-20 transition-all"
+            >
+              <Linkedin size={20} />
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+        <div className="max-w-6xl mx-auto text-center text-gray-400">
+          <p>&copy; 2024 Alex Chen. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
+
+----
+<style>
+        /* Base styles for dark mode aesthetic */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* equivalent to bg-slate-900 */
+            color: #f8fafc; /* equivalent to text-white */
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- 1. Section Container (.py-20 .px-4 .sm:px-6 .lg:px-8) --- */
+        .section-projects {
+            padding-top: 5rem;    /* py-20 */
+            padding-bottom: 5rem; /* py-20 */
+            padding-left: 1rem;   /* px-4 */
+            padding-right: 1rem;  /* px-4 */
+        }
+
+        /* Responsive padding for medium and large screens */
+        @media (min-width: 640px) { /* sm:px-6 */
+            .section-projects {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) { /* lg:px-8 */
+            .section-projects {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        /* --- 2. Inner Wrapper (.max-w-6xl .mx-auto) --- */
+        .container-wrapper {
+            max-width: 72rem; /* max-w-6xl */
+            margin-left: auto; /* mx-auto */
+            margin-right: auto; /* mx-auto */
+        }
+
+        /* --- 3. Heading (text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3) --- */
+        .section-heading {
+            font-size: 2.25rem; /* text-4xl */
+            line-height: 2.5rem;
+            font-weight: 700; /* font-bold */
+            text-align: center; /* text-center */
+            margin-bottom: 4rem; /* mb-16 */
+            
+            display: flex; /* flex */
+            align-items: center; /* items-center */
+            justify-content: center; /* justify-center */
+            gap: 0.75rem; /* gap-3 */
+        }
+        
+        /* Icon color (.text-purple-400) */
+        .section-heading-icon {
+            color: #c084fc; /* purple-400 */
+            /* Assuming Code component size is handled by React component or parent font size */
+        }
+
+        /* --- 4. Projects Grid (.grid .md:grid-cols-2 .gap-8) --- */
+        .projects-grid {
+            display: grid; /* grid */
+            gap: 2rem; /* gap-8 */
+        }
+
+        /* Responsive grid columns */
+        @media (min-width: 768px) { /* md:grid-cols-2 */
+            .projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* --- 5. Project Card (bg-slate-800/50 p-6 rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all group) --- */
+        .project-card {
+            background-color: rgba(30, 41, 59, 0.5); /* bg-slate-800/50 */
+            padding: 1.5rem; /* p-6 */
+            border-radius: 1rem; /* rounded-2xl */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* border border-white/10 */
+            transition: all 300ms ease-in-out; /* transition-all */
+        }
+
+        /* Hover effect on card (.hover:border-purple-500/30) */
+        .project-card:hover {
+            border-color: rgba(168, 85, 247, 0.3); /* purple-500/30 */
+        }
+
+        /* --- 6. Project Title (text-2xl font-bold mb-3 text-purple-400 group-hover:text-purple-300 transition-colors) --- */
+        .project-title {
+            font-size: 1.5rem; /* text-2xl */
+            line-height: 2rem;
+            font-weight: 700; /* font-bold */
+            margin-bottom: 0.75rem; /* mb-3 */
+            color: #c084fc; /* text-purple-400 */
+            transition: color 300ms ease-in-out; /* transition-colors */
+        }
+
+        /* Hover effect on title (.group-hover:text-purple-300) - targets title when parent card is hovered */
+        .project-card:hover .project-title {
+            color: #d8b4fe; /* purple-300 */
+        }
+
+        /* --- 7. Project Description (.text-gray-300 .mb-4 .leading-relaxed) --- */
+        .project-description {
+            color: #d1d5db; /* text-gray-300 */
+            margin-bottom: 1rem; /* mb-4 */
+            line-height: 1.625; /* leading-relaxed */
+        }
+
+        /* --- 8. Tech List Container (.flex .flex-wrap .gap-2 .mb-4) --- */
+        .tech-list {
+            display: flex; /* flex */
+            flex-wrap: wrap; /* flex-wrap */
+            gap: 0.5rem; /* gap-2 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        /* --- 9. Tech Tag (px-3 py-1 bg-purple-900/50 rounded-full text-sm border border-purple-500/30) --- */
+        .tech-tag {
+            padding: 0.25rem 0.75rem; /* py-1 px-3 */
+            background-color: rgba(88, 28, 135, 0.5); /* bg-purple-900/50 */
+            border-radius: 9999px; /* rounded-full */
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.25rem;
+            border: 1px solid rgba(168, 85, 247, 0.3); /* border border-purple-500/30 */
+            display: inline-block; /* ensures padding/margins work */
+            white-space: nowrap; /* keeps tags on one line */
+        }
+
+        /* --- 10. Project Link (inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium group/link) --- */
+        .project-link {
+            display: inline-flex; /* inline-flex */
+            align-items: center; /* items-center */
+            gap: 0.5rem; /* gap-2 */
+            color: #c084fc; /* text-purple-400 */
+            font-weight: 500; /* font-medium */
+            text-decoration: none; /* Clean up default link style */
+        }
+
+        /* Hover effect on link (.hover:text-purple-300) */
+        .project-link:hover {
+            color: #d8b4fe; /* purple-300 */
+        }
+
+        /* --- 11. Link Icon (group-hover/link:translate-x-1 transition-transform) --- */
+        .link-icon {
+            transition: transform 300ms ease-in-out; /* transition-transform */
+        }
+
+        /* Hover effect on icon (.group-hover/link:translate-x-1) - targets icon when parent link is hovered */
+        .project-link:hover .link-icon {
+            transform: translateX(0.25rem); /* translate-x-1 */
+        }
+---
+
+        /* Base styles for dark mode aesthetic */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* equivalent to bg-slate-900 */
+            color: #f8fafc; /* equivalent to text-white */
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- 1. Section Container (.py-20 .px-4 .sm:px-6 .lg:px-8) --- */
+        .section-projects {
+            padding-top: 5rem;    /* py-20 */
+            padding-bottom: 5rem; /* py-20 */
+            padding-left: 1rem;   /* px-4 */
+            padding-right: 1rem;  /* px-4 */
+        }
+
+        /* Responsive padding for medium and large screens */
+        @media (min-width: 640px) { /* sm:px-6 */
+            .section-projects {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) { /* lg:px-8 */
+            .section-projects {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        /* --- 2. Inner Wrapper (.max-w-6xl .mx-auto) --- */
+        .container-wrapper {
+            max-width: 72rem; /* max-w-6xl */
+            margin-left: auto; /* mx-auto */
+            margin-right: auto; /* mx-auto */
+        }
+
+        /* --- 3. Heading (text-4xl font-bold text-center mb-16 flex items-center justify-center gap-3) --- */
+        .section-heading {
+            font-size: 2.25rem; /* text-4xl */
+            line-height: 2.5rem;
+            font-weight: 700; /* font-bold */
+            text-align: center; /* text-center */
+            margin-bottom: 4rem; /* mb-16 */
+            
+            display: flex; /* flex */
+            align-items: center; /* items-center */
+            justify-content: center; /* justify-center */
+            gap: 0.75rem; /* gap-3 */
+        }
+        
+        /* Icon color (.text-purple-400) */
+        .section-heading-icon {
+            color: #c084fc; /* purple-400 */
+            /* Assuming Code component size is handled by React component or parent font size */
+        }
+
+        /* --- 4. Projects Grid (.grid .md:grid-cols-2 .gap-8) --- */
+        .projects-grid {
+            display: grid; /* grid */
+            gap: 2rem; /* gap-8 */
+        }
+
+        /* Responsive grid columns */
+        @media (min-width: 768px) { /* md:grid-cols-2 */
+            .projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* --- 5. Project Card (bg-slate-800/50 p-6 rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all group) --- */
+        .project-card {
+            background-color: rgba(30, 41, 59, 0.5); /* bg-slate-800/50 */
+            padding: 1.5rem; /* p-6 */
+            border-radius: 1rem; /* rounded-2xl */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* border border-white/10 */
+            transition: all 300ms ease-in-out; /* transition-all */
+        }
+
+        /* Hover effect on card (.hover:border-purple-500/30) */
+        .project-card:hover {
+            border-color: rgba(168, 85, 247, 0.3); /* purple-500/30 */
+        }
+
+        /* --- 6. Project Title (text-2xl font-bold mb-3 text-purple-400 group-hover:text-purple-300 transition-colors) --- */
+        .project-title {
+            font-size: 1.5rem; /* text-2xl */
+            line-height: 2rem;
+            font-weight: 700; /* font-bold */
+            margin-bottom: 0.75rem; /* mb-3 */
+            color: #c084fc; /* text-purple-400 */
+            transition: color 300ms ease-in-out; /* transition-colors */
+        }
+
+        /* Hover effect on title (.group-hover:text-purple-300) - targets title when parent card is hovered */
+        .project-card:hover .project-title {
+            color: #d8b4fe; /* purple-300 */
+        }
+
+        /* --- 7. Project Description (.text-gray-300 .mb-4 .leading-relaxed) --- */
+        .project-description {
+            color: #d1d5db; /* text-gray-300 */
+            margin-bottom: 1rem; /* mb-4 */
+            line-height: 1.625; /* leading-relaxed */
+        }
+
+        /* --- 8. Tech List Container (.flex .flex-wrap .gap-2 .mb-4) --- */
+        .tech-list {
+            display: flex; /* flex */
+            flex-wrap: wrap; /* flex-wrap */
+            gap: 0.5rem; /* gap-2 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+
+        /* --- 9. Tech Tag (px-3 py-1 bg-purple-900/50 rounded-full text-sm border border-purple-500/30) --- */
+        .tech-tag {
+            padding: 0.25rem 0.75rem; /* py-1 px-3 */
+            background-color: rgba(88, 28, 135, 0.5); /* bg-purple-900/50 */
+            border-radius: 9999px; /* rounded-full */
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.25rem;
+            border: 1px solid rgba(168, 85, 247, 0.3); /* border border-purple-500/30 */
+            display: inline-block; /* ensures padding/margins work */
+            white-space: nowrap; /* keeps tags on one line */
+        }
+
+        /* --- 10. Project Link (inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium group/link) --- */
+        .project-link {
+            display: inline-flex; /* inline-flex */
+            align-items: center; /* items-center */
+            gap: 0.5rem; /* gap-2 */
+            color: #c084fc; /* text-purple-400 */
+            font-weight: 500; /* font-medium */
+            text-decoration: none; /* Clean up default link style */
+        }
+
+        /* Hover effect on link (.hover:text-purple-300) */
+        .project-link:hover {
+            color: #d8b4fe; /* purple-300 */
+        }
+
+        /* --- 11. Link Icon (group-hover/link:translate-x-1 transition-transform) --- */
+        .link-icon {
+            transition: transform 300ms ease-in-out; /* transition-transform */
+        }
+
+        /* Hover effect on icon (.group-hover/link:translate-x-1) - targets icon when parent link is hovered */
+        .project-link:hover .link-icon {
+            transform: translateX(0.25rem); /* translate-x-1 */
+        }
+
+    </style>
+
+    <section id="projects" class="section-projects">
+        <div class="container-wrapper">
+
+          <h2 class="section-heading">
+            <!-- Simulates <Code className="text-purple-400" /> -->
+            <span class="section-heading-icon" style="font-size: 1.5em;">&lt;/&gt;</span>
+            Featured Projects
+          </h2>
+
+          <div class="projects-grid">
+
+            <!-- Loop starts here, mocking a project -->
+            <div class="project-card">
+              <h3 class="project-title">
+                Cosmic Explorer
+              </h3>
+              <p class="project-description">A full-stack application for visualizing real-time star data using WebGL and a proprietary REST API. Features include interactive 3D models and predictive pathing.</p>
+              
+              <div class="tech-list">
+                <!-- Tech tags loop -->
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Three.js</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">PostgreSQL</span>
+              </div>
+              
+              <a 
+                href="#" 
+                class="project-link"
+              >
+                View Project
+                <!-- Simulates <ExternalLink size={16} className="group-hover/link:translate-x-1 transition-transform" /> -->
+                <span class="link-icon" style="font-size: 16px;">&#8594;</span>
+              </a>
+            </div>
+
+            <!-- Mocking a second project for layout demo -->
+             <div class="project-card">
+              <h3 class="project-title">
+                InvoiceFlow
+              </h3>
+              <p class="project-description">A secure, responsive tool for small business invoicing. Includes PDF generation and integration with payment gateways, built with state-of-the-art security features.</p>
+              
+              <div class="tech-list">
+                <!-- Tech tags loop -->
+                <span class="tech-tag">Angular</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">Stripe</span>
+                <span class="tech-tag">TypeScript</span>
+              </div>
+              
+              <a 
+                href="#" 
+                class="project-link"
+              >
+                View Project
+                <!-- Simulates <ExternalLink size={16} className="group-hover/link:translate-x-1 transition-transform" /> -->
+                <span class="link-icon" style="font-size: 16px;">&#8594;</span>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+      </section>

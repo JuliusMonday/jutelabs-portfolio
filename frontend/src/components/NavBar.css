@@ -48,6 +48,30 @@
   display: none;
 }
 
+ .icon-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(to right, #553cbe, #1e293b);
+    /* background-color: #553cbe #1e293b; */
+}
+ .social-icon {
+    display: flex;
+    background-color: inherit;
+    color: #e2e8f0;
+    text-decoration: none;
+    transition: color 200ms ease-in-out;
+    cursor: pointer;
+}
+.social-icon:hover {
+    color: #d8b4fe;
+    background-color: transparent;
+}
+.icon-placeholder {
+    /* font-size: 20px;  */
+    line-height: 1; 
+}
 @media (min-width: 768px) {
   .nav-links.open ul,
   .nav-links.closed ul {
