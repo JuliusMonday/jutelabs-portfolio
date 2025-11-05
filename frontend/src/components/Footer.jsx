@@ -25,7 +25,7 @@ export default function Footer() {
         {/* Right section - social links */}
         <div className="flex gap-6 text-2xl">
           <a
-            href="https://github.com"
+            href="https://github.com/JuliusMonday"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#00ffff] transition-colors"
