@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +11,16 @@ export default function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   const navLinks = ["about", "services", "projects", "contact"];
+
+  // 🧩 Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => (document.body.style.overflow = "auto");
+  }, [menuOpen]);
 
   return (
     <>
@@ -48,7 +58,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* MOBILE MENU (separate from header for proper layering) */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
