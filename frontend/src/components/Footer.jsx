@@ -33,7 +33,7 @@ export default function Footer() {
             <FaGithub />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/chimaobi-julius-monday/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#00ffff] transition-colors"
@@ -41,7 +41,7 @@ export default function Footer() {
             <FaLinkedin />
           </a>
           <a
-            href="https://twitter.com"
+            href="https://twitter.com/JuTeLabs"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#00ffff] transition-colors"

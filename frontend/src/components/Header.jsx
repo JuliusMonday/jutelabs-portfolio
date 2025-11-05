@@ -3,48 +3,52 @@ import { Link as ScrollLink } from "react-scroll";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Header.css";
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
   const navLinks = ["about", "services", "projects", "contact"];
 
   return (
-    <header className="fixed w-full my-0 margin-b bg-[#0a192f]/90 backdrop-blur-md border-b border-[#22d39a]/20 z-50 shadow-md">
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <div className="font-extrabold text-xl tracking-wide text-[#00ffff] hover:text-[#22d39a] transition-colors duration-300 cursor-pointer">
-          JuTeLabs
+    <>
+      {/* HEADER */}
+      <header className="fixed top-0 left-0 w-full bg-[#0a192f]/90 backdrop-blur-md border-b border-[#22d39a]/20 z-[60] shadow-md">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+          {/* Logo */}
+          <div className="font-extrabold text-xl tracking-wide text-[#00ffff] hover:text-[#22d39a] transition-colors duration-300 cursor-pointer">
+            JuTeLabs
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex gap-8">
+            {navLinks.map((item) => (
+              <ScrollLink
+                key={item}
+                to={item}
+                smooth
+                offset={-80}
+                duration={600}
+                className="cursor-pointer text-sm uppercase font-medium text-[#d9e3f0] hover:text-[#00ffff] transition-colors duration-300"
+              >
+                {item}
+              </ScrollLink>
+            ))}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden text-[#00ffff] text-3xl focus:outline-none z-[70]"
+          >
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </button>
         </div>
+      </header>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-8">
-          {navLinks.map((item) => (
-            <ScrollLink
-              key={item}
-              to={item}
-              smooth
-              offset={-80}
-              duration={600}
-              className="cursor-pointer text-sm uppercase font-medium text-[#d9e3f0] hover:text-[#00ffff] transition-colors duration-300"
-            >
-              {item}
-            </ScrollLink>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-[#00ffff] text-3xl focus:outline-none"
-        >
-          {menuOpen ? <FiX /> : <FiMenu />}
-        </button>
-      </div>
-
-      {/* Mobile Menu - Slide in Animation */}
+      {/* MOBILE MENU (separate from header for proper layering) */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -53,7 +57,7 @@ export default function Header() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 90, damping: 15 }}
-            className="fixed top-0 right-0 h-screen w-3/4 sm:w-1/2 bg-[#0a192f] border-l border-[#22d39a]/20 shadow-2xl z-40 flex flex-col items-center justify-center space-y-10"
+            className="fixed top-0 right-0 h-screen w-3/4 sm:w-1/2 bg-[#0a192f] border-l border-[#22d39a]/20 shadow-2xl z-[50] flex flex-col items-center justify-center space-y-10"
           >
             {navLinks.map((item) => (
               <ScrollLink
@@ -69,7 +73,6 @@ export default function Header() {
               </ScrollLink>
             ))}
 
-            {/* Contact Button */}
             <a
               href="#contact"
               onClick={closeMenu}
@@ -80,6 +83,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
