@@ -1,83 +1,108 @@
-import { ExternalLink, Code } from 'lucide-react';
-import "./Projects.css";
-const Projects = () => {
- const projects = [
-    {
-      title: "Izu Nwachukwu Foundation",
-      description: "A full scale, sustainable, and impactful non-profit organization that empowers children and youth from sub-Saharan Africa to achieve their full potential in education, health, and social development.",
-      technologies: ["HTML", "Css", "Javascript", "WordPress"],
-      link: "#"
-    },
-    {
-      title: "BloodMatch",
-      description: "A full-stack application for matching blood donors and recipients based on their blood type, compatitibility, and Clinicals.",
-      technologies: ["React", "Node.js", "Express", "MongoDB"],
-      link: "#"
-    },
+import React from "react";
+import { motion } from "framer-motion";
+import charlesPhoto from "../assets/charlesosujifoundation.png";
+import healthStar from "../assets/healthstar.jpg";
+import izunwachukwu from "../assets/izunwachukwu.jpg";
+import association from "../assets/studentassoc.jpg";
+import bloodmatch from "../assets/bloodmatch.jpg";
+import cgpa from "../assets/cgpa.jpg";
+const PROJECTS = [
+  {
+    title: "Izunwachukwu Foundation Website",
+    desc: "Nonprofit site for community programs and donations.",
+    image: izunwachukwu,
+    link:"https://www.izunwachukwufoundation.org/"
+  },
+  {
+    title: "HealthStar EMS Inc.",
+    desc: "Emergency medical services website focused on accessibility and trust.",
+    image: healthStar,
+    link:"https://www.healthstaremsinc.com/"
+  },
+  {
+    title: "BloodMatch",
+    desc: "Blood donation and matching platform.",
+    image: bloodmatch,
+    link:"https://bloodmatch.onrender.com/"
+  },
+  {
+    title: "JuTeLabs CGPA Calculator",
+    desc: "An academic tool for calculating CGPA.",
+    image: cgpa,
+    link: "https://jutelabs-cgpa-calculator.vercel.app/"
+  },
+  {
+    title: "Student Association Website",
+    desc: "Platform for student engagement.",
+    image: association,
+    link:"https://nauradsa-official.vercel.app/"
+  },
+  {
+    title: "The Charles Osuji Foundation",
+    desc: "Foundation site showcasing projects and impact.",
+    image: charlesPhoto,
+    link: "https://www.charlesosujifoundation.ca/"
+  },
+];
 
-    {
-      title: "JuTeLabs CGPA Calculator",
-      description: "An interactive tool for calculating the CGPA (College Grade Point Average) of students based on their grades for each semester using NBTE Standard for polytechnic and college students.",
-      technologies: ["React", "Node.js", "Express", "MongoDB"],
-      link: "#"
-    },
-    
-    {
-      title: "Students' Association Website",
-      description: "A responsive website for the Students' Association of JuTeLabs, showcasing the latest news, events, and activities.",
-      technologies: ["React", "Tailwind CSS", "Framer Motion"],
-      link: "#"
-   },
-     {
-      title: "HealthStarEMSINC",
-      description: "A responsive website for HealthStar EMS,dedicated to offering comprehensive medical transport services tailored to each patient. Our state-of-the-art vehicles, skilled staff, and patient-first approach ensure trusted, effective care across all transport needs.",
-      technologies: ["HTML", "CSS", "WORDPRESS", "FIGMA"],
-      link: "#"
-   },
-      {
-      title: "The Charles Osuji Foundation",
-      description: "A responsive website for the charles osuji foundation a non-profit organisation that aims to empower young people through education and oportunity.",
-      technologies: ["HTML", "CSS", "WORDPRESS", "FIGMA"],
-      link: "#"
-    }
-  ];
+export default function Projects() {
   return (
-    <>
-            {/* Projects Section */}
-       <section id="projects" className="section-projects">
-        <div className="container-wrapper">
-          <h2 className="section-heading">
-            <Code className="section-heading-icon" />
-            Featured Projects
-          </h2>
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <div key={index} className="project-card">
-                <h3 className="project-title">
-                  {project.title}
-                </h3>
-                <p className="project-description">{project.description}</p>
-                <div className="tech-list">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span key={techIndex} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <a 
-                  href={project.link} 
-                  className="project-link"
-                >
-                  View Project
-                  <ExternalLink size={16} className="link-icon" />
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  )
-}
+    <section
+      id="projects"
+      className="py-20 px-6 md:px-20 bg-[#0a192f] text-[#d9e3f0]"
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl font-bold text-center md:text-left"
+        >
+          Featured <span className="text-[#00ffff]">Projects</span>
+        </motion.h2>
 
-export default Projects
+        {/* Project Grid */}
+        <div className="mt-10 grid sm:grid-cols-1 md:grid-cols-2 gap-8">
+          {PROJECTS.map((p, i) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+              className="flex flex-col sm:flex-row items-center gap-4 bg-[#d9e3f0] text-[#0a192f] p-5 rounded-xl shadow-md hover:shadow-[0_0_15px_#00ffff55] transition-all"
+            >
+              {/* Image */}
+              <div className="w-full sm:w-40 h-28 flex-shrink-0 rounded-lg overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="w-full h-full object-cover"
+                //   onError={(e) => {
+                //     e.currentTarget.src =
+                //       'https://via.placeholder.com/320x180?text=Project';
+                //   }}
+                />
+              </div>
+
+              {/* Text */}
+              <div>
+                <h4 className="font-semibold text-lg">{p.title}</h4>
+                <p className="text-sm mt-2 text-[#111111b3] leading-relaxed">
+                  {p.desc}
+                </p>
+                <div className="mt-3 text-sm font-medium text-[#22d39a] cursor-pointer hover:underline">
+                  <a href={p.link} target="_blank" rel="noopener noreferrer">
+                              View case study →
+                    </a>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

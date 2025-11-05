@@ -1,50 +1,26 @@
-import { useState, useEffect } from 'react';
-import NavBar from './components/NavBar';
-import Home from './components/Home';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import './App.css';
-import Footer from './components/Footer';
+import React from 'react'
+import Header from './components/Header.jsx'
+import Hero from './components/Hero.jsx'
+import About from './components/About.jsx'
+import Services from './components/Services.jsx'
+import Expertise from './components/Expertise.jsx'
+import Projects from './components/Projects.jsx'
+import Contact from './components/Contact.jsx'
+import Footer from './components/Footer.jsx'
 
-const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [showProject, setShowProject] = useState(true)
-  // Apply theme class to document body so it affects the entire page
-  useEffect(() => {
-    document.body.classList.toggle('dark-mode', isDarkMode);
-    document.body.classList.toggle('light-mode', !isDarkMode);
-  }, [isDarkMode]);
-
-  const handleToggleTheme = () => {
-    setIsDarkMode(prev => !prev);
-  };
-
-  // useEffect(() => {
-  //   // Set a timer to hide the component after 1 minute
-  //   const timer = setTimeout(() => {
-  //     setShowProject(false);
-  //   }, 60000); // 60,000 ms = 1 minute
-
-  //   // Cleanup the timer on unmount
-  //   return () => clearTimeout(timer);
-  // }, []);
-
-
+export default function App() {
   return (
-    <>
-      <NavBar isDarkMode={isDarkMode} onToggleTheme={handleToggleTheme} />
-      <main>
-        <Home />
-        <Skills />
-        {/* <div className="projects">
-          {showProject && <Projects />}
-        </div> */}
-        <Projects/>
+    <div className="antialiased text-gray-900 bg-white min-h-screen">
+      <Header />
+      <main className="pt-0">
+        <Hero />
+        <About />
+        <Services />
+        <Expertise />
+        <Projects />
         <Contact />
-        <Footer/>
       </main>
-    </>
-  );
-};
-export default App;
+      <Footer />
+    </div>
+  )
+}
