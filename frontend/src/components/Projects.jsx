@@ -8,6 +8,7 @@ import bloodmatch from "../assets/bloodmatch.jpg";
 import cgpa from "../assets/cgpa.jpg";
 import pregvett from "../assets/pregvett.png";
 import fidi from "../assets/fidi-web-photo.png";
+import phoneId from "../assets/phone-id.png";
 const PROJECTS = [
   {
     title: "Izunwachukwu Foundation Website",
@@ -56,7 +57,13 @@ const PROJECTS = [
     desc: "FIDI is a website for a law firm that offers a unique opportunity for internationally trained lawyers to gain practical skills and knowledge in the practice of law in Alberta, Canada.",
     image: fidi,
     link: "https://www.fidiosujismith.ca/"
-   }
+  },
+  {
+    title: "Phone Number Identifier",
+    desc: "A website Dedicated to bringing certainty in mobile phone number validation across all providers",
+    image: phoneId,
+    link: "https://juliusmonday.github.io/numberIdentifier/"
+  }
 ];
 
 export default function Projects() {
