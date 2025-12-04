@@ -7,6 +7,7 @@ import association from "../assets/studentassoc.jpg";
 import bloodmatch from "../assets/bloodmatch.jpg";
 import cgpa from "../assets/cgpa.jpg";
 import pregvett from "../assets/pregvett.png";
+import fidi from "../assets/fidi-web-photo.png";
 const PROJECTS = [
   {
     title: "Izunwachukwu Foundation Website",
@@ -49,7 +50,13 @@ const PROJECTS = [
     desc: "PregVett is Nigeria's leading maternal health platform, providing comprehensive care, guidance, and support for pregnant women throughout their journey.",
     image: pregvett,
     link: "https://pregvett-frontend.onrender.com/"
-  }
+  },
+  {
+    title: "FIDI - MAIN WEBSITE",
+    desc: "FIDI is a website for a law firm that offers a unique opportunity for internationally trained lawyers to gain practical skills and knowledge in the practice of law in Alberta, Canada.",
+    image: fidi,
+    link: "https://www.fidiosujismith.ca/"
+   }
 ];
 
 export default function Projects() {
