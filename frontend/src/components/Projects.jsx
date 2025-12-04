@@ -6,6 +6,7 @@ import izunwachukwu from "../assets/izunwachukwu.jpg";
 import association from "../assets/studentassoc.jpg";
 import bloodmatch from "../assets/bloodmatch.jpg";
 import cgpa from "../assets/cgpa.jpg";
+import pregvett from "../assets/pregvett.png";
 const PROJECTS = [
   {
     title: "Izunwachukwu Foundation Website",
@@ -43,6 +44,12 @@ const PROJECTS = [
     image: charlesPhoto,
     link: "https://www.charlesosujifoundation.ca/"
   },
+   {
+    title: "Pregvett - project ongoing💕💕",
+    desc: "PregVett is Nigeria's leading maternal health platform, providing comprehensive care, guidance, and support for pregnant women throughout their journey.",
+    image: pregvett,
+    link: "https://pregvett-frontend.onrender.com/"
+  }
 ];
 
 export default function Projects() {

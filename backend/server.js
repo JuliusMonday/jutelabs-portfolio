@@ -14,7 +14,7 @@ app.use("/api/contact", contactRoutes);
 
 // Default route
 app.get("/", (req, res) => {
-  res.send("Portfolio backend is running 🚀");
+    res.send("Portfolio backend is running 🚀");
 });
 
 const PORT = process.env.PORT || 5000;
