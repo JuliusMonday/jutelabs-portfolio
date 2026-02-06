@@ -9,6 +9,7 @@ import cgpa from "../assets/cgpa.jpg";
 import pregvett from "../assets/pregvett.png";
 import fidi from "../assets/fidi-web-photo.png";
 import phoneId from "../assets/phone-id.png";
+import kedgeanchorlaw from "../assets/kedgeanchorlaw-photo.png";
 const PROJECTS = [
   {
     title: "Izunwachukwu Foundation Website",
@@ -63,6 +64,12 @@ const PROJECTS = [
     desc: "A website Dedicated to bringing certainty in mobile phone number validation across all providers",
     image: phoneId,
     link: "https://juliusmonday.github.io/numberIdentifier/"
+  },
+  {
+    title: "KedgeAnchorLaw",
+    desc: "A website for a law firm that offers a unique opportunity for internationally trained lawyers to gain practical skills and knowledge in the practice of law in Alberta, Canada.",
+    image: kedgeanchorlaw,
+    link: "https://kedgeanchorlaw.ca/"
   }
 ];
 
