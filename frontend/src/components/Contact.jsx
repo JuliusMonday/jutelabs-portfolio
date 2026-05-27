@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
 // Replace with your encrypted FormSubmit token URL when ready
-const FORM_SUBMIT_URL = "https://formsubmit.co/YOUR_UNIQUE_TOKEN_HERE";
+const FORM_SUBMIT_URL = "https://formsubmit.co/el/sogoxi";
 
 export default function Contact() {
   const [status, setStatus] = useState("idle");
@@ -96,7 +96,9 @@ export default function Contact() {
           <div className="mt-6 space-y-3 text-sm text-[#111111]/70">
             <div>
               <strong className="text-[#0a192f]">Email:</strong>{" "}
-              jutelabsofficial@gmail.com
+              <a  className="text-[#00ffff] hover:underline">
+                https://formsubmit.co/el/sogoxi
+              </a>
             </div>
             <div>
               <strong className="text-[#0a192f]">Location:</strong> Nigeria
