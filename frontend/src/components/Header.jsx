@@ -51,7 +51,10 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-[#00ffff] text-3xl focus:outline-none z-[70]"
+            className="md:hidden text-[#00ffff] text-3xl focus:outline-none"
+            aria-label={
+              menuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
           >
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
@@ -67,7 +70,7 @@ export default function Header() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 90, damping: 15 }}
-            className="fixed top-0 right-0 h-screen w-3/4 sm:w-1/2 bg-[#0a192f] border-l border-[#22d39a]/20 shadow-2xl z-[50] flex flex-col items-center justify-center space-y-10"
+            className="fixed top-0 right-0 h-screen w-full sm:w-3/4 md:w-1/2 bg-[#0a192f] border-l border-[#22d39a]/20 shadow-2xl z-[50] flex flex-col items-center justify-center space-y-10 px-6"
           >
             {navLinks.map((item) => (
               <ScrollLink

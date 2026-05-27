@@ -14,3 +14,18 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Local Backend Setup
+
+This app expects the backend to run on `http://localhost:5000` during development. The frontend proxies requests from `/api` to the backend automatically.
+
+Create a `backend/.env` file with the following variables:
+
+```env
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+CLIENT_URL=http://localhost:5173
+PORT=5000
+```
+
+Use Gmail app passwords or another SMTP provider with properly configured credentials.

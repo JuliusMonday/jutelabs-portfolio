@@ -9,7 +9,9 @@ export const sendMessage = async (req, res) => {
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -17,16 +19,17 @@ export const sendMessage = async (req, res) => {
     });
 
     const mailOptions = {
-      from: email,
+      from: process.env.EMAIL_USER,
+      replyTo: email,
       to: process.env.EMAIL_USER,
       subject: `Portfolio Contact Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
     };
 
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: "Message sent successfully!" });
+    res.status(200).json({ message: "Message sent successfully." });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to send message." });
+    console.error("Contact form send error:", error);
+    res.status(500).json({ error: "Unable to send message at this time." });
   }
 };
