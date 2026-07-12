@@ -33,7 +33,7 @@ export default function Dashboard() {
     try {
       const token = localStorage.getItem('adminToken');
       await axios.put(
-        'http://localhost:5000/api/auth/update',
+        `${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/auth/update`,
         { username: newUsername, password: newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );

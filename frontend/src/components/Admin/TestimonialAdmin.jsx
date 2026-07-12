@@ -20,7 +20,7 @@ export default function TestimonialAdmin() {
 
   const fetchTestimonials = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/testimonials');
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/testimonials`);
       setTestimonials(data);
     } catch (err) {
       console.error('Failed to load testimonials', err);
@@ -43,7 +43,7 @@ export default function TestimonialAdmin() {
     if (window.confirm('Are you sure you want to delete this testimonial?')) {
       try {
         const token = localStorage.getItem('adminToken');
-        await axios.delete(`http://localhost:5000/api/testimonials/${id}`, {
+        await axios.delete(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/testimonials/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchTestimonials();
@@ -76,9 +76,9 @@ export default function TestimonialAdmin() {
       };
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/testimonials/${editingId}`, formData, config);
+        await axios.put(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/testimonials/${editingId}`, formData, config);
       } else {
-        await axios.post('http://localhost:5000/api/testimonials', formData, config);
+        await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/testimonials`, formData, config);
       }
       
       setShowForm(false);

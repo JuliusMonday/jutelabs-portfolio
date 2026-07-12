@@ -21,7 +21,7 @@ export default function BlogAdmin() {
 
   const fetchBlogs = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/blogs');
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/blogs`);
       setBlogs(data);
     } catch (err) {
       console.error('Failed to load blogs', err);
@@ -43,7 +43,7 @@ export default function BlogAdmin() {
     if (window.confirm('Are you sure you want to delete this blog post?')) {
       try {
         const token = localStorage.getItem('adminToken');
-        await axios.delete(`http://localhost:5000/api/blogs/${id}`, {
+        await axios.delete(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/blogs/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchBlogs();
@@ -79,9 +79,9 @@ export default function BlogAdmin() {
       };
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/blogs/${editingId}`, formData, config);
+        await axios.put(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/blogs/${editingId}`, formData, config);
       } else {
-        await axios.post('http://localhost:5000/api/blogs', formData, config);
+        await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/blogs`, formData, config);
       }
       
       setShowForm(false);

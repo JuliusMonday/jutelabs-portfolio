@@ -14,7 +14,7 @@ export default function CaseStudy() {
 
     const fetchProject = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/projects/${id}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/projects/${id}`);
         setProject(data);
       } catch (err) {
         setError('Failed to load project details.');

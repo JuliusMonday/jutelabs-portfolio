@@ -23,7 +23,7 @@ export default function ProjectAdmin() {
 
   const fetchProjects = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/projects');
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/projects`);
       setProjects(data);
     } catch (err) {
       setError('Failed to load projects');
@@ -48,7 +48,7 @@ export default function ProjectAdmin() {
     if (window.confirm('Are you sure you want to delete this project?')) {
       try {
         const token = localStorage.getItem('adminToken');
-        await axios.delete(`http://localhost:5000/api/projects/${id}`, {
+        await axios.delete(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/projects/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchProjects();
@@ -83,9 +83,9 @@ export default function ProjectAdmin() {
       };
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/projects/${editingId}`, formData, config);
+        await axios.put(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/projects/${editingId}`, formData, config);
       } else {
-        await axios.post('http://localhost:5000/api/projects', formData, config);
+        await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/projects`, formData, config);
       }
       
       setShowForm(false);
