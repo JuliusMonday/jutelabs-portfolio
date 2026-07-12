@@ -28,9 +28,21 @@ export default function Header() {
       <header className="fixed top-0 left-0 w-full bg-[#0a192f]/90 backdrop-blur-md border-b border-[#22d39a]/20 z-[60] shadow-md">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo */}
-          <div className="font-extrabold text-xl tracking-wide text-[#00ffff] hover:text-[#22d39a] transition-colors duration-300 cursor-pointer">
-            JuTeLabs
-          </div>
+          <ScrollLink 
+            to="home" 
+            smooth 
+            duration={600} 
+            className="flex items-center gap-3 cursor-pointer group"
+          >
+            <img 
+              src="/assets/jutelabs-symbol-logo.png" 
+              alt="JuTeLabs" 
+              className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" 
+            />
+            <span className="font-extrabold text-2xl tracking-wide text-[#00ffff] group-hover:text-[#22d39a] transition-colors duration-300">
+              JuTeLabs
+            </span>
+          </ScrollLink>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-8">

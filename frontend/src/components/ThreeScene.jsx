@@ -17,21 +17,21 @@ function Particles({ count = 800 }) {
     return arr
   }, [count])
 
+  // Initialize positions once after mount to fix browser spinning/lag
+  React.useEffect(() => {
+    if (!mesh.current) return;
+    for (let i = 0; i < count; i++) {
+      dummy.position.set(positions[i * 3 + 0], positions[i * 3 + 1], positions[i * 3 + 2]);
+      dummy.updateMatrix();
+      mesh.current.setMatrixAt(i, dummy.matrix);
+    }
+    mesh.current.instanceMatrix.needsUpdate = true;
+  }, [count, positions, dummy]);
+
   useFrame((state, delta) => {
     if (!mesh.current) return
     mesh.current.rotation.y += delta * 0.02
     mesh.current.rotation.x = Math.sin(state.clock.elapsedTime / 6) * 0.02
-    // small per-instance motion
-    for (let i = 0; i < count; i++) {
-      dummy.position.set(
-        positions[i * 3 + 0],
-        positions[i * 3 + 1] + Math.sin(state.clock.elapsedTime / 2 + i) * 0.05,
-        positions[i * 3 + 2]
-      )
-      dummy.updateMatrix()
-      mesh.current.setMatrixAt(i, dummy.matrix)
-    }
-    mesh.current.instanceMatrix.needsUpdate = true
   })
 
   return (

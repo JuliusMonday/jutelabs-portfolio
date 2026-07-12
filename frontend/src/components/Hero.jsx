@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ReactTyped }from "react-typed";
 import ThreeScene from "./ThreeScene.jsx";
+import ResumeModal from "./ResumeModal.jsx";
 
 export default function Hero() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   return (
     <section
       id="home"
@@ -48,13 +51,22 @@ export default function Hero() {
             businesses and individuals bring ideas to life through technology and science.
           </p>
 
-          <motion.a
-            href="#projects"
-            whileHover={{ scale: 1.05 }}
-            className="inline-block mt-6 px-6 py-3 bg-[#22d39a] hover:bg-[#00ffff] text-[#111111] font-medium rounded-full shadow-lg transition-all duration-200"
-          >
-            View My Work
-          </motion.a>
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.05 }}
+              className="px-6 py-3 bg-[#22d39a] hover:bg-[#00ffff] text-[#111111] font-medium rounded-full shadow-lg transition-all duration-200"
+            >
+              View My Work
+            </motion.a>
+            <motion.button
+              onClick={() => setIsResumeOpen(true)}
+              whileHover={{ scale: 1.05 }}
+              className="px-6 py-3 bg-transparent border-2 border-[#00ffff] text-[#00ffff] font-medium rounded-full hover:bg-[#00ffff]/10 transition-all duration-200"
+            >
+              View Resume
+            </motion.button>
+          </div>
         </motion.div>
 
         {/* Photo Section */}
@@ -94,6 +106,8 @@ export default function Hero() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </motion.div>
+
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 }

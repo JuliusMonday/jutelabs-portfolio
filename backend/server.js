@@ -1,9 +1,20 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-// contactRoutes removed: contact handling moved to FormSubmit (frontend-only)
+import connectDB from "./config/db.js";
+import mongoose from "mongoose";
+import authRoutes from "./routes/authRoutes.js";
+import projectRoutes from "./routes/projectRoutes.js";
+import blogRoutes from "./routes/blogRoutes.js";
+import testimonialRoutes from "./routes/testimonialRoutes.js";
 
 dotenv.config();
+
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log(err));
 
 const app = express();
 const corsOptions = {
@@ -11,14 +22,14 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// Routes
-// Note: message handling has been moved to FormSubmit.co via the frontend.
-// If you need to re-enable a custom backend handler later, restore the import
-// above and uncomment the middleware registration below.
-// app.use("/api/contact", contactRoutes);
+// Mount Routes
+app.use("/api/auth", authRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/blogs", blogRoutes);
+app.use("/api/testimonials", testimonialRoutes);
 
 // Default route
 app.get("/", (req, res) => {
