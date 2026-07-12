@@ -96,8 +96,8 @@ export default function Contact() {
           <div className="mt-6 space-y-3 text-sm text-[#111111]/70">
             <div>
               <strong className="text-[#0a192f]">Email:</strong>{" "}
-              <a href="mailto:contact@jutelabs.com" className="text-[#00ffff] hover:underline">
-                contact@jutelabs.com
+              <a href="mailto:jutelabsofficial@gmail.com" className="text-[#0a192f] font-semibold hover:text-[#22d39a] hover:underline transition-colors">
+                jutelabsofficial@gmail.com
               </a>
             </div>
             <div>
