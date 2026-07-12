@@ -91,7 +91,7 @@ export default function Contact() {
           <h2 className="text-3xl font-bold text-[#0a192f]">Get in touch</h2>
           <p className="mt-3 text-[#111111]/80">
             I’m open to new opportunities, collaborations, and freelance work.
-            Send a message — I’ll reply as soon as I can.
+            Send a message I’ll reply as soon as I can.
           </p>
           <div className="mt-6 space-y-3 text-sm text-[#111111]/70">
             <div>

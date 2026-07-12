@@ -34,7 +34,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              {/* Note: Update href with actual resume PDF path when available */}
+              {/* Note: Update href with actual resume PDF path when available
               <a 
                 href="/resume.pdf" 
                 download
@@ -43,6 +43,7 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <Download size={18} />
                 <span>Download PDF</span>
               </a>
+              */}
               <button 
                 onClick={onClose}
                 className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition"
@@ -157,6 +158,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             </div>
           </div>
           
+          {/* 
           <div className="p-4 border-t border-[#d9e3f0]/10 bg-[#0a192f] sm:hidden flex justify-center">
             <a 
               href="/resume.pdf" 
@@ -167,6 +169,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               <span>Download PDF</span>
             </a>
           </div>
+          */}
         </motion.div>
       </div>
     </AnimatePresence>

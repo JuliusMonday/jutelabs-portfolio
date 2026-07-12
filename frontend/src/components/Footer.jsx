@@ -13,7 +13,7 @@ export default function Footer() {
             className="w-12 h-12 rounded-full object-cover border-2 border-[#00ffff]"
           />
           <p>
-            © 2025{" "}
+            © 2026{" "}
             <span className="font-semibold text-white">
               Monday Chimaobi Julius
             </span>{" "}
