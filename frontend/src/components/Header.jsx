@@ -39,7 +39,7 @@ export default function Header() {
             <img 
               src="/assets/jutelabs-symbol-logo.png" 
               alt="JuTeLabs" 
-              className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" 
+              className="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" 
             />
             <span className="font-extrabold text-2xl tracking-wide text-[#00ffff] group-hover:text-[#22d39a] transition-colors duration-300">
               JuTeLabs

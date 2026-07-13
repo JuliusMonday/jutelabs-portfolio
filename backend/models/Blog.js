@@ -22,6 +22,10 @@ const blogSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    publishedAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     timestamps: true,

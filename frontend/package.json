@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@blocknote/core": "^0.14.4",
+    "@blocknote/mantine": "^0.14.4",
     "@blocknote/react": "^0.14.4",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",

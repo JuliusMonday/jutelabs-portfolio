@@ -22,6 +22,15 @@ const generateSlug = (title) => {
 
 router.get("/", async (req, res) => {
   try {
+    const blogs = await Blog.find({ publishedAt: { $lte: new Date() } }).sort({ publishedAt: -1 });
+    res.json(blogs);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error" });
+  }
+});
+
+router.get("/admin/all", protect, async (req, res) => {
+  try {
     const blogs = await Blog.find({}).sort({ createdAt: -1 });
     res.json(blogs);
   } catch (error) {
@@ -45,7 +54,7 @@ router.get("/:slug", async (req, res) => {
 
 router.post("/", protect, upload.single("coverImage"), async (req, res) => {
   try {
-    const { title, content, excerpt } = req.body;
+    const { title, content, excerpt, publishedAt } = req.body;
     let imageUrl = req.file ? req.file.path : "";
 
     let slug = generateSlug(title);
@@ -60,6 +69,7 @@ router.post("/", protect, upload.single("coverImage"), async (req, res) => {
       excerpt,
       slug,
       coverImage: imageUrl,
+      publishedAt: publishedAt ? new Date(publishedAt) : Date.now(),
     });
 
     const created = await blog.save();
@@ -71,7 +81,7 @@ router.post("/", protect, upload.single("coverImage"), async (req, res) => {
 
 router.put("/:id", protect, upload.single("coverImage"), async (req, res) => {
   try {
-    const { title, content, excerpt } = req.body;
+    const { title, content, excerpt, publishedAt } = req.body;
     const blog = await Blog.findById(req.params.id);
 
     if (blog) {
@@ -87,6 +97,7 @@ router.put("/:id", protect, upload.single("coverImage"), async (req, res) => {
 
       blog.content = content || blog.content;
       blog.excerpt = excerpt !== undefined ? excerpt : blog.excerpt;
+      if (publishedAt) blog.publishedAt = new Date(publishedAt);
       if (req.file) blog.coverImage = req.file.path;
 
       const updated = await blog.save();

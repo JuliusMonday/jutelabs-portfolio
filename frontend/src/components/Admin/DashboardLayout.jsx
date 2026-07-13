@@ -13,11 +13,23 @@ export default function DashboardLayout({ children, activeTab, setActiveTab }) {
 
   const navItems = [
     { id: 'projects', label: 'Projects', icon: <LayoutDashboard size={20} /> },
-    { id: 'blogs', label: 'Blog Posts', icon: <FileText size={20} /> },
+    { 
+      id: 'blogs', 
+      label: 'Posts', 
+      icon: <FileText size={20} />,
+      subItems: [
+        { id: 'blogs', label: 'All Posts' },
+        { id: 'blogs_add', label: 'Add Post' },
+        { id: 'blogs_categories', label: 'Categories' },
+        { id: 'blogs_tags', label: 'Tags' },
+      ]
+    },
     { id: 'testimonials', label: 'Testimonials', icon: <MessageSquareQuote size={20} /> },
     { id: 'comments', label: 'Comments', icon: <MessageCircle size={20} /> },
     { id: 'settings', label: 'Settings', icon: <Settings size={20} /> },
   ];
+
+  const [expandedNav, setExpandedNav] = useState('blogs');
 
   return (
     <div className="flex h-screen bg-[#0a192f] text-[#d9e3f0] overflow-hidden">
@@ -47,18 +59,47 @@ export default function DashboardLayout({ children, activeTab, setActiveTab }) {
 
         <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
           {navItems.map(item => (
-            <button
-              key={item.id}
-              onClick={() => { setActiveTab(item.id); setIsSidebarOpen(false); }}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                activeTab === item.id 
-                  ? 'bg-[#00ffff]/10 text-[#00ffff] border border-[#00ffff]/20' 
-                  : 'text-gray-400 hover:bg-[#d9e3f0]/5 hover:text-white'
-              }`}
-            >
-              {item.icon}
-              <span className="font-medium">{item.label}</span>
-            </button>
+            <div key={item.id} className="w-full">
+              <button
+                onClick={() => {
+                  if (item.subItems) {
+                    setExpandedNav(expandedNav === item.id ? '' : item.id);
+                  } else {
+                    setActiveTab(item.id); 
+                    setIsSidebarOpen(false);
+                  }
+                }}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all ${
+                  (activeTab === item.id || (item.subItems && item.subItems.some(sub => sub.id === activeTab))) 
+                    ? 'bg-[#00ffff]/10 text-[#00ffff] border border-[#00ffff]/20' 
+                    : 'text-gray-400 hover:bg-[#d9e3f0]/5 hover:text-white'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  {item.icon}
+                  <span className="font-medium">{item.label}</span>
+                </div>
+              </button>
+              
+              {/* Submenu rendering */}
+              {item.subItems && expandedNav === item.id && (
+                <div className="ml-10 mt-1 space-y-1 border-l-2 border-[#00ffff]/20 pl-2">
+                  {item.subItems.map(subItem => (
+                    <button
+                      key={subItem.id}
+                      onClick={() => { setActiveTab(subItem.id); setIsSidebarOpen(false); }}
+                      className={`w-full text-left px-3 py-2 text-sm rounded transition-all ${
+                        activeTab === subItem.id
+                          ? 'text-[#00ffff] bg-[#00ffff]/5'
+                          : 'text-gray-400 hover:text-white hover:bg-[#d9e3f0]/5'
+                      }`}
+                    >
+                      {subItem.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 

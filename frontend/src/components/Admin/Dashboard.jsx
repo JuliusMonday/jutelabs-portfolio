@@ -6,10 +6,12 @@ import ProjectAdmin from './ProjectAdmin.jsx';
 import BlogAdmin from './BlogAdmin.jsx';
 import TestimonialAdmin from './TestimonialAdmin.jsx';
 import CommentAdmin from './CommentAdmin.jsx';
+import PostEditor from './PostEditor.jsx';
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('projects');
+  const [editingPostId, setEditingPostId] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // Settings states
@@ -52,7 +54,25 @@ export default function Dashboard() {
   return (
     <DashboardLayout activeTab={activeTab} setActiveTab={setActiveTab}>
       {activeTab === 'projects' && <ProjectAdmin />}
-      {activeTab === 'blogs' && <BlogAdmin />}
+      {activeTab === 'blogs' && <BlogAdmin setActiveTab={setActiveTab} setEditingPostId={setEditingPostId} />}
+      {(activeTab === 'blogs_add' || activeTab === 'blogs_edit') && (
+        <PostEditor 
+          postId={activeTab === 'blogs_edit' ? editingPostId : null} 
+          setActiveTab={setActiveTab} 
+        />
+      )}
+      {activeTab === 'blogs_categories' && (
+        <div className="flex flex-col items-center justify-center h-full text-center">
+          <h2 className="text-3xl font-bold text-[#00ffff] mb-4">Categories</h2>
+          <p className="text-gray-400 max-w-md">Category management is currently under development. Soon you will be able to organize your blog posts into distinct categories!</p>
+        </div>
+      )}
+      {activeTab === 'blogs_tags' && (
+        <div className="flex flex-col items-center justify-center h-full text-center">
+          <h2 className="text-3xl font-bold text-[#00ffff] mb-4">Tags</h2>
+          <p className="text-gray-400 max-w-md">Tag management is currently under development. Soon you will be able to add custom tags to improve searchability and SEO!</p>
+        </div>
+      )}
       {activeTab === 'testimonials' && <TestimonialAdmin />}
       {activeTab === 'comments' && <CommentAdmin />}
       

@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import BlockNoteEditor from './BlockNoteEditor.jsx';
-import { ErrorBoundary } from '../ErrorBoundary.jsx';
 
-export default function BlogAdmin() {
+export default function BlogAdmin({ setActiveTab, setEditingPostId }) {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  
-  const [showForm, setShowForm] = useState(false);
-  const [editingId, setEditingId] = useState(null);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [excerpt, setExcerpt] = useState('');
-  const [coverImage, setCoverImage] = useState(null);
-  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     fetchBlogs();
@@ -21,7 +11,10 @@ export default function BlogAdmin() {
 
   const fetchBlogs = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/blogs`);
+      const token = localStorage.getItem('adminToken');
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/blogs/admin/all`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setBlogs(data);
     } catch (err) {
       console.error('Failed to load blogs', err);
@@ -31,12 +24,8 @@ export default function BlogAdmin() {
   };
 
   const handleEdit = (blog) => {
-    setEditingId(blog._id);
-    setTitle(blog.title);
-    setContent(blog.content);
-    setExcerpt(blog.excerpt || '');
-    setCoverImage(null);
-    setShowForm(true);
+    setEditingPostId(blog._id);
+    setActiveTab('blogs_edit');
   };
 
   const handleDelete = async (id) => {
@@ -53,54 +42,6 @@ export default function BlogAdmin() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!content.trim()) {
-        alert("Content is required");
-        return;
-    }
-    setSubmitting(true);
-    
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', content);
-    formData.append('excerpt', excerpt);
-    if (coverImage) {
-      formData.append('coverImage', coverImage);
-    }
-
-    try {
-      const token = localStorage.getItem('adminToken');
-      const config = {
-        headers: { 
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data'
-        }
-      };
-
-      if (editingId) {
-        await axios.put(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/blogs/${editingId}`, formData, config);
-      } else {
-        await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/blogs`, formData, config);
-      }
-      
-      setShowForm(false);
-      setEditingId(null);
-      setTitle('');
-      setContent('');
-      setExcerpt('');
-      setCoverImage(null);
-      
-      fetchBlogs();
-    } catch (err) {
-      alert(err.response?.data?.message || 'Failed to save blog');
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
-
-
   if (loading) return <div className="text-white">Loading blogs...</div>;
 
   return (
@@ -109,9 +50,8 @@ export default function BlogAdmin() {
         <h2 className="text-2xl font-bold text-white">Manage Blog Posts</h2>
         <button 
           onClick={() => {
-            setShowForm(true);
-            setEditingId(null);
-            setTitle(''); setContent(''); setExcerpt(''); setCoverImage(null);
+            setEditingPostId(null);
+            setActiveTab('blogs_add');
           }}
           className="px-4 py-2 bg-[#22d39a] text-[#0a192f] font-bold rounded hover:bg-[#00ffff] transition"
         >
@@ -119,51 +59,15 @@ export default function BlogAdmin() {
         </button>
       </div>
 
-      {showForm && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 overflow-y-auto">
-          <div className="bg-[#112240] p-6 rounded-xl w-full max-w-4xl border border-[#00ffff]/30 my-8">
-            <h2 className="text-2xl font-bold text-[#00ffff] mb-4">
-              {editingId ? 'Edit Article' : 'Write New Article'}
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm mb-1 text-white">Title</label>
-                <input type="text" required value={title} onChange={e => setTitle(e.target.value)} className="w-full px-3 py-2 bg-[#0a192f] border border-[#d9e3f0]/20 rounded text-white" />
-              </div>
-              <div>
-                <label className="block text-sm mb-1 text-white">Excerpt / Short Description</label>
-                <textarea required value={excerpt} onChange={e => setExcerpt(e.target.value)} className="w-full px-3 py-2 bg-[#0a192f] border border-[#d9e3f0]/20 rounded text-white" rows="2"></textarea>
-              </div>
-              <div className="bg-white rounded text-black py-4">
-                <label className="block text-sm mb-2 px-4 font-bold text-gray-800">Content (Block Editor)</label>
-                <ErrorBoundary>
-                  <BlockNoteEditor 
-                    initialHTML={content} 
-                    onChange={setContent} 
-                  />
-                </ErrorBoundary>
-              </div>
-              <div className="pt-8">
-                <label className="block text-sm mb-1 text-white">Cover Image {editingId && '(Leave empty to keep current)'}</label>
-                <input type="file" accept="image/*" onChange={e => setCoverImage(e.target.files[0])} className="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-[#00ffff] file:text-[#0a192f] file:font-semibold" />
-              </div>
-              <div className="flex justify-end space-x-3 pt-4 border-t border-gray-700">
-                <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 border border-[#d9e3f0]/30 rounded hover:bg-[#d9e3f0]/10 text-white">Cancel</button>
-                <button type="submit" disabled={submitting} className="px-4 py-2 bg-[#00ffff] text-[#0a192f] font-bold rounded hover:bg-[#22d39a]">
-                  {submitting ? 'Publishing...' : 'Publish'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
       <div className="grid sm:grid-cols-2 gap-6">
         {blogs.map(b => (
           <div key={b._id} className="bg-[#112240] rounded-xl overflow-hidden shadow-lg border border-[#d9e3f0]/10 flex flex-col">
             {b.coverImage && <img src={b.coverImage} alt={b.title} className="w-full h-48 object-cover" />}
             <div className="p-4 flex-1 flex flex-col">
               <h3 className="text-xl font-bold text-white mb-2">{b.title}</h3>
+              {b.publishedAt && new Date(b.publishedAt) > new Date() && (
+                <span className="inline-block px-2 py-1 bg-yellow-500/20 text-yellow-500 text-xs rounded w-max mb-2">Scheduled for {new Date(b.publishedAt).toLocaleString()}</span>
+              )}
               <p className="text-sm text-gray-400 flex-1">{b.excerpt}</p>
               <div className="mt-4 flex space-x-3 border-t border-[#d9e3f0]/10 pt-4">
                 <button onClick={() => handleEdit(b)} className="flex-1 py-1.5 bg-[#d9e3f0]/10 text-white rounded hover:bg-[#d9e3f0]/20 transition">Edit</button>

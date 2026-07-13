@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { BlockNoteViewRaw as BlockNoteView, useCreateBlockNote } from "@blocknote/react";
+import { useCreateBlockNote } from "@blocknote/react";
+import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/core/fonts/inter.css";
-import "@blocknote/react/style.css";
+import "@blocknote/mantine/style.css";
 
 export default function BlockNoteEditor({ initialHTML, onChange }) {
   const editor = useCreateBlockNote();
@@ -18,15 +19,13 @@ export default function BlockNoteEditor({ initialHTML, onChange }) {
   }, [editor, initialHTML]);
 
   return (
-    <ErrorBoundary>
-      <BlockNoteView 
-        editor={editor} 
-        onChange={async () => {
-          const html = await editor.blocksToHTMLLossy(editor.document);
-          onChange(html);
-        }}
-        theme="light"
-      />
-    </ErrorBoundary>
+    <BlockNoteView 
+      editor={editor} 
+      theme="light"
+      onChange={async () => {
+        const html = await editor.blocksToHTMLLossy(editor.document);
+        onChange(html);
+      }}
+    />
   );
 }
