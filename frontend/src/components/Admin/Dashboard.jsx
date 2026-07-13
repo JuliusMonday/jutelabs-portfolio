@@ -5,6 +5,7 @@ import DashboardLayout from './DashboardLayout.jsx';
 import ProjectAdmin from './ProjectAdmin.jsx';
 import BlogAdmin from './BlogAdmin.jsx';
 import TestimonialAdmin from './TestimonialAdmin.jsx';
+import CommentAdmin from './CommentAdmin.jsx';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ export default function Dashboard() {
       {activeTab === 'projects' && <ProjectAdmin />}
       {activeTab === 'blogs' && <BlogAdmin />}
       {activeTab === 'testimonials' && <TestimonialAdmin />}
+      {activeTab === 'comments' && <CommentAdmin />}
       
       {activeTab === 'settings' && (
         <div>

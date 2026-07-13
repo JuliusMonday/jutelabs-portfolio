@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FileText, MessageSquareQuote, Settings, LogOut, Menu, X } from 'lucide-react';
+import { LayoutDashboard, FileText, MessageSquareQuote, MessageCircle, Settings, LogOut, Menu, X } from 'lucide-react';
 
 export default function DashboardLayout({ children, activeTab, setActiveTab }) {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ export default function DashboardLayout({ children, activeTab, setActiveTab }) {
     { id: 'projects', label: 'Projects', icon: <LayoutDashboard size={20} /> },
     { id: 'blogs', label: 'Blog Posts', icon: <FileText size={20} /> },
     { id: 'testimonials', label: 'Testimonials', icon: <MessageSquareQuote size={20} /> },
+    { id: 'comments', label: 'Comments', icon: <MessageCircle size={20} /> },
     { id: 'settings', label: 'Settings', icon: <Settings size={20} /> },
   ];
 

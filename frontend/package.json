@@ -11,6 +11,8 @@
     "start": "node server/index.js"
   },
   "dependencies": {
+    "@blocknote/core": "^0.14.4",
+    "@blocknote/react": "^0.14.4",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@tailwindcss/typography": "^0.5.20",

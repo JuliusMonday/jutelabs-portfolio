@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import BlockNoteEditor from './BlockNoteEditor.jsx';
+import { ErrorBoundary } from '../ErrorBoundary.jsx';
 
 export default function BlogAdmin() {
   const [blogs, setBlogs] = useState([]);
@@ -99,15 +99,7 @@ export default function BlogAdmin() {
     }
   };
 
-  const quillModules = {
-    toolbar: [
-      [{ 'header': [1, 2, 3, false] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'}],
-      ['link', 'image', 'code-block'],
-      ['clean']
-    ],
-  };
+
 
   if (loading) return <div className="text-white">Loading blogs...</div>;
 
@@ -142,15 +134,14 @@ export default function BlogAdmin() {
                 <label className="block text-sm mb-1 text-white">Excerpt / Short Description</label>
                 <textarea required value={excerpt} onChange={e => setExcerpt(e.target.value)} className="w-full px-3 py-2 bg-[#0a192f] border border-[#d9e3f0]/20 rounded text-white" rows="2"></textarea>
               </div>
-              <div className="bg-white rounded text-black pb-12">
-                <label className="block text-sm mb-1 text-white bg-[#112240] pt-2">Content (Block Editor)</label>
-                <ReactQuill 
-                  theme="snow" 
-                  value={content} 
-                  onChange={setContent} 
-                  modules={quillModules}
-                  className="h-64"
-                />
+              <div className="bg-white rounded text-black py-4">
+                <label className="block text-sm mb-2 px-4 font-bold text-gray-800">Content (Block Editor)</label>
+                <ErrorBoundary>
+                  <BlockNoteEditor 
+                    initialHTML={content} 
+                    onChange={setContent} 
+                  />
+                </ErrorBoundary>
               </div>
               <div className="pt-8">
                 <label className="block text-sm mb-1 text-white">Cover Image {editingId && '(Leave empty to keep current)'}</label>

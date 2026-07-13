@@ -4,6 +4,8 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Header.css";
 
+import { Link as RouterLink } from "react-router-dom";
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -45,7 +47,7 @@ export default function Header() {
           </ScrollLink>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((item) => (
               <ScrollLink
                 key={item}
@@ -58,6 +60,12 @@ export default function Header() {
                 {item}
               </ScrollLink>
             ))}
+            <RouterLink
+              to="/blog"
+              className="cursor-pointer text-sm uppercase font-medium text-[#00ffff] border-b-2 border-transparent hover:border-[#00ffff] transition-all duration-300"
+            >
+              Blog
+            </RouterLink>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -97,6 +105,13 @@ export default function Header() {
                 {item}
               </ScrollLink>
             ))}
+            <RouterLink
+              to="/blog"
+              onClick={closeMenu}
+              className="text-[#00ffff] text-xl uppercase font-semibold hover:text-[#22d39a] transition-colors duration-300 cursor-pointer"
+            >
+              Blog
+            </RouterLink>
 
             <a
               href="#contact"

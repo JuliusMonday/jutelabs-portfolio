@@ -7,6 +7,7 @@ import authRoutes from "./routes/authRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import testimonialRoutes from "./routes/testimonialRoutes.js";
+import commentRoutes from "./routes/commentRoutes.js";
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/testimonials", testimonialRoutes);
+app.use("/api/comments", commentRoutes);
 
 // Default route
 app.get("/", (req, res) => {

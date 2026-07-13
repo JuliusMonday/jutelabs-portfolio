@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
 // Replace with your encrypted FormSubmit token URL when ready
-const FORM_SUBMIT_URL = "https://formsubmit.co/el/sogoxi";
+const FORM_SUBMIT_URL = "https://formsubmit.co/ajax/jutelabsofficial@gmail.com";
 
 export default function Contact() {
   const [status, setStatus] = useState("idle");
@@ -46,21 +46,20 @@ export default function Contact() {
     }
 
     try {
-      const payload = new FormData();
-      payload.append("name", name);
-      payload.append("email", email);
-      payload.append("message", body);
-      // FormSubmit controls: honeypot and captcha
-      payload.append("_honey", "");
-      payload.append("_captcha", "true");
-      payload.append("_subject", `Portfolio Contact from ${name}`);
-
       const res = await fetch(FORM_SUBMIT_URL, {
         method: "POST",
-        body: payload,
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
+        body: JSON.stringify({
+          name,
+          email,
+          message: body,
+          _honey: "",
+          _captcha: "true",
+          _subject: `Portfolio Contact from ${name}`
+        }),
       });
 
       if (res.ok) {
